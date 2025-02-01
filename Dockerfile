@@ -12,6 +12,16 @@ RUN npm install
 
 # Copy source files
 COPY . .
+COPY app ./app
+COPY components ./components
+COPY hooks ./hooks
+COPY lib ./lib
+COPY styles ./styles
+COPY public ./public
+COPY next.config.mjs ./
+COPY tsconfig.json ./
+COPY tailwind.config.ts ./
+COPY postcss.config.mjs ./
 
 # Build the application
 RUN npm run build
