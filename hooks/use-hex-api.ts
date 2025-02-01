@@ -41,7 +41,7 @@ export interface AssetDataDetailed extends AssetData {
 export type TimeRange = '24h' | '1w' | '1m' | '3m' | '6m' | '1y';
 
 export const useHexApi = () => {
-  const baseURL = process.env.NEXT_PUBLIC_HEX_API_URL || 'http://localhost:3001';
+  const baseURL = process.env.NEXT_PUBLIC_HEX_API_URL || 'http://localhost:8000';
   const api = useMemo(() => axios.create({ baseURL }), [baseURL]);
 
   const getAllAssets = useCallback(async (): Promise<AssetDataWith24hPriceChange[]> => {
