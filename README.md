@@ -2,6 +2,10 @@
 
 # Universal HEX Frontend
 
+![Assets](/docs/assets/assets.png)
+
+![Asset Details](/docs/assets/asset-detail.png)
+
 ## Description
 
 Universal HEX Frontend is the web interface for the Hybrid Exchange for Universal Assets. It provides a modern, user-friendly interface to interact with cross-chain assets and track their performance.
