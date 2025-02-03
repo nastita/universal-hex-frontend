@@ -11,19 +11,22 @@ COPY package*.json ./
 RUN npm install
 
 # Copy source files
-COPY . .
-COPY app ./app
-COPY components ./components
-COPY hooks ./hooks
-COPY lib ./lib
-COPY styles ./styles
-COPY public ./public
+COPY app/ ./app/
+COPY components/ ./components/
+COPY docs/ ./docs/
+COPY hooks/ ./hooks/
+COPY lib/ ./lib/
+COPY public/ ./public/
+COPY styles/ ./styles/
 COPY next.config.mjs ./
-COPY tsconfig.json ./
-COPY tailwind.config.ts ./
 COPY postcss.config.mjs ./
+COPY tailwind.config.ts ./
+COPY tsconfig.json ./
+COPY components.json ./
 
 # Build the application
+ARG NEXT_PUBLIC_HEX_API_URL
+ENV NEXT_PUBLIC_HEX_API_URL=$NEXT_PUBLIC_HEX_API_URL
 RUN npm run build
 
 # Stage 2: Production environment
@@ -32,8 +35,10 @@ FROM node:18-alpine AS runner
 # Set working directory
 WORKDIR /app
 
-# Set environment to production
+# Set environment variables
 ENV NODE_ENV=production
+ARG NEXT_PUBLIC_HEX_API_URL
+ENV NEXT_PUBLIC_HEX_API_URL=$NEXT_PUBLIC_HEX_API_URL
 
 # Copy necessary files from builder
 COPY --from=builder /app/package*.json ./
